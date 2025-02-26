@@ -23,7 +23,7 @@
     
 ### Выполнение домашнего задания
 
-1. Созданы 2 виртуальные машины с помощью Vagrantfile
+#### 1. Созданы 2 виртуальные машины с помощью Vagrantfile
 
 
 Создаём виртуальные машины:
@@ -34,9 +34,10 @@
     - zabbix - zabbix server
     - nginx - nginx сервер
 
-2. Настройка zabbix server
+#### 2. Настройка zabbix server
 
 Подключаемся к ВМ
+
 ```vagrant ssh zabbix```
 
 Переходим на сайт [Zabbix](https://www.zabbix.com/ru/download?zabbix=7.2&os_distribution=ubuntu&os_version=22.04&components=agent&db=&ws=) выбираем подходящую конфигурацию и следуем инсирукции.
@@ -44,11 +45,14 @@
 <details>
 <summary> Примечание </summary>
 
-    - Инструкция подразумевает, что у вас уже установлен сервер баз данных
 
-```apt install mysql-server -y```
+* Инструкция подразумевает, что у вас уже установлен сервер баз данных
 
-    - Для установки русского языка необходимо добавить locale.
+```
+apt install mysql-server -y
+```
+
+* Для установки русского языка необходимо добавить locale.
 
 Проверить список установленных locale
 
@@ -63,12 +67,13 @@ locale -a
 locale-gen 
 ```
 
-    - Имя пользователя и пароль  Admin/zabbix
+* Имя пользователя и пароль  Admin/zabbix
+
 </details>
 
 Доступ на сервер http://localhost:8080
 
-3. Настройка zabbix-agent на сервере nginx
+#### 3. Настройка zabbix-agent на сервере nginx
 
 Переходим на сайт [Zabbix](https://www.zabbix.com/ru/download?zabbix=7.2&os_distribution=ubuntu&os_version=22.04&components=agent&db=&ws=) выбираем подходящую конфигурацию и следуем инсирукции.
 
@@ -91,7 +96,7 @@ LISTEN         0              4096                            [::]:10050        
 Переходим на стараницу zabbix server и добавляем сервер nginx в узлы сети.
 
 
-4. Настраиваем дашборд
+#### 4. Настраиваем дашборд
 
 Для настройки дашборда необходимо узлам сети (zabbix server, nginx) добавить инересующие нас шаблоны. В данном случаем были добавлены шаблоны:
  - Linux by Zabbix agent
@@ -100,4 +105,4 @@ LISTEN         0              4096                            [::]:10050        
 Редактируем главную страницу, добавив интересующие нас графики.
 
 Результат:
-[Настроенный дашборд Zabbix](assets/images/zabbix.png)
+![Настроенный дашборд Zabbix](assets/images/zabbix.png)
